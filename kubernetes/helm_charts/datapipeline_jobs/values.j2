@@ -77,7 +77,7 @@ base_config: |
       statebackend {
         blob {
           storage {
-            account = "{{ cloud_public_storage_accountname }}.s3.amazonaws.com"
+            account = "{{ azure_account }}.blob.core.windows.net"
             container = "{{ flink_container_name }}"
             checkpointing.dir = "checkpoint"
           }
