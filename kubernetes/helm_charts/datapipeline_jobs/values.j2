@@ -82,7 +82,11 @@ base_config: |
             checkpointing.dir = "checkpoint"
           }
         }
+{% if checkpoint_store_type == "azure" %}
         base.url = "wasbs://"${job.statebackend.blob.storage.container}"@"${job.statebackend.blob.storage.account}"/"${job.statebackend.blob.storage.checkpointing.dir}
+{% elif checkpoint_store_type == "s3" %}
+        base.url = "s3://"${job.statebackend.blob.storage.account}"/"${job.statebackend.blob.storage.container}"/"${job.statebackend.blob.storage.checkpointing.dir}
+{% endif %}
       }
     }
     task {
