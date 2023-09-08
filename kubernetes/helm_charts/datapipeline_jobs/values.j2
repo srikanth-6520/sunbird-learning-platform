@@ -77,7 +77,7 @@ base_config: |
       statebackend {
         blob {
           storage {
-            account = "{% if checkpoint_store_type == "azure" %}{{ cloud_storage_key }}.blob.core.windows.net{% elif checkpoint_store_type == "s3" %}{{ flink_dp_storage_container }}{% endif %}"
+            account = "{% if checkpoint_store_type == "azure" %}{{ cloud_storage_key }}.blob.core.windows.net{% elif checkpoint_store_type == "s3" %}{% endif %}"
             container = "{{ cloud_storage_flink_bucketname }}"
             checkpointing.dir = "checkpoint"
           }
