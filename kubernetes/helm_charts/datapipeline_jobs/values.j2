@@ -80,9 +80,9 @@ base_config: |
             account = "{{ cloud_public_storage_accountname }}"
             container = "{{ cloud_storage_flink_bucketname }}"
             checkpointing.dir = "checkpoint"
-         }
-       }
-base.url = "s3://"${job.statebackend.blob.storage.container}"/"${job.statebackend.blob.storage.checkpointing.dir}
+          }
+        }
+        base.url = "s3://"${job.statebackend.blob.storage.container}"/"${job.statebackend.blob.storage.checkpointing.dir}
       }
     }
     task {
