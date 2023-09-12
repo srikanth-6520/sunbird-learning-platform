@@ -73,15 +73,15 @@ base_config: |
     }
     job {
       env = "{{ env_name }}"
-      enable.distributed.checkpointing = false
+      enable.distributed.checkpointing = true
       statebackend {
         blob {
-    storage {
-        account = "{{ cloud_public_storage_accountname }}"
-        container = "{{ cloud_storage_flink_bucketname }}"
-        checkpointing.dir = "checkpoint"
-    }
-  }
+          storage {
+            account = "{{ cloud_public_storage_accountname }}"
+            container = "{{ cloud_storage_flink_bucketname }}"
+            checkpointing.dir = "checkpoint"
+         }
+       }
 base.url = "s3://"${job.statebackend.blob.storage.container}"/"${job.statebackend.blob.storage.checkpointing.dir}
       }
     }
