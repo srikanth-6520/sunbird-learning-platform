@@ -76,13 +76,13 @@ base_config: |
       enable.distributed.checkpointing = false
       statebackend {
         blob {
-          storage {
-            account = "{{ azure_account }}.blob.core.windows.net"
-            container = "{{ flink_container_name }}"
-            checkpointing.dir = "checkpoint"
-          }
-        }
-        base.url = "wasbs://"${job.statebackend.blob.storage.container}"@"${job.statebackend.blob.storage.account}"/"${job.statebackend.blob.storage.checkpointing.dir}
+    storage {
+        account = "{{ cloud_public_storage_accountname }}"
+        container = "{{ cloud_storage_flink_bucketname }}"
+        checkpointing.dir = "checkpoint"
+    }
+  }
+base.url = "s3://"${job.statebackend.blob.storage.container}"/"${job.statebackend.blob.storage.checkpointing.dir}
       }
     }
     task {
